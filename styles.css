@@ -1,0 +1,175 @@
+/* 🌸 No (intentional) bugs in this file, can be ignored 🌸 */
+
+body {
+  background-color: rgb(255, 251, 235);
+  font-family: "Montserrat", sans-serif;
+  color: #504139;
+
+  p {
+    margin: 0;
+  }
+}
+
+.product-list-container {
+  max-width: 90rem;
+  container: product-list / inline-size;
+
+  margin: 0 auto;
+  padding-inline: 1rem;
+}
+
+.product-list-headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+
+  & h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    font-family: "Nunito Sans", sans-serif;
+
+    margin: 0;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  & img {
+    aspect-ratio: 1;
+    max-width: 150px;
+  }
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.5rem;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.product-list-item {
+  position: relative;
+  list-style: none;
+}
+
+.product-list-item-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-list-item-picture {
+  display: block;
+  aspect-ratio: 10 / 13;
+  margin-bottom: 0.5rem;
+}
+
+.product-list-item-favorites-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.5rem;
+  height: 2.5rem;
+
+  border: none;
+  background-color: #fffef8;
+  cursor: pointer;
+}
+
+.product-list-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-list-item-description {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.product-list-item-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.product-list-item-price {
+  font-size: 0.75rem;
+  font-weight: 200;
+  white-space: nowrap;
+}
+
+.product-list-btn-container {
+  display: none;
+  justify-content: center;
+}
+
+.product-list-btn {
+  border: 1px solid #504139;
+  border-radius: 2px;
+
+  color: #504139;
+  background-color: transparent;
+  outline: none;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  min-height: 2.5rem;
+  min-width: 11.25rem;
+
+  transition: background-color 0.35s ease, color 0.35s ease, opacity 0.35s ease;
+
+  &:hover {
+    background-color: #504139;
+    color: #fffef8;
+  }
+}
+
+@media (width >= 776px) {
+  .product-list-container {
+    padding-inline: 3rem;
+  }
+
+  .product-list-headline {
+    & h1 {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+@container product-list (width >= 520px) {
+  .product-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+@container product-list (width >= 650px) {
+  .product-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@container product-list (width >= 820px) {
+  .product-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.is-hidden {
+  display: none;
+}
+
+.is-active {
+  display: flex;
+}
+
+.is-active-block {
+  display: block;
+}

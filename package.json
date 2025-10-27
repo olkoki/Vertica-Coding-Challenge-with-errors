@@ -1,0 +1,16 @@
+{
+  "name": "Vertica Coding Challenge ✨🩷",
+  "version": "1.0.0",
+  "description": "A coding challenge made for the ReDi School, using content from Søstrene Grene",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve"
+  },
+  "dependencies": {
+    "sass": "1.89.0"
+  },
+  "author": "Monika Ananieva | Vertica A/S",
+  "devDependencies": {
+    "serve": "11.2.0"
+  }
+}
