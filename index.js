@@ -1,6 +1,6 @@
 // 👾 Bugs ahead (1) 👾
 // Check hint-#1 if you need help 💕
-import { data } from "./data.js";
+import { data } from "./data";
 
 const ITEMS_PER_PAGE = 8;
 let currentIndex = ITEMS_PER_PAGE;
@@ -125,3 +125,4 @@ document.addEventListener("DOMContentLoaded", () => {
     showMoreItemsBtn.addEventListener("click", showMoreItems);
   }
 });
+
