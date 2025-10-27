@@ -1,15 +1,15 @@
 // 👾 Bugs ahead (1) 👾
 // Check hint-#1 if you need help 💕
-import { data } from "./data";
+import { data } from "./data.js";
 
 const ITEMS_PER_PAGE = 8;
 let currentIndex = ITEMS_PER_PAGE;
 
 // 👾 Bugs ahead (2) 👾
 // Check hint-#2 to hint-#3 if you need help 💕
-const listEl = document.querySelectorAll(".product-list");
+const listEl = document.querySelector(".product-list");
 const btnContainer = document.querySelector(".product-list-btn-container");
-const showMoreItemsBtn = document.querySelector("product-list-btn");
+const showMoreItemsBtn = document.querySelector(".product-list-btn");
 
 const favorites = new Map();
 
@@ -28,7 +28,7 @@ const createProductItem = (item) => {
 
   return `
     <li class="product-list-item">
-      <a class="product-list-item-link" href="item.linkUrl" target="new_tab">
+      <a class="product-list-item-link" href="${item.linkUrl}" target="_blank">
         <picture class="product-list-item-picture">
           <img src="${item.imageUrl}" class="product-list-item-img" alt="${
     item.name
@@ -36,8 +36,8 @@ const createProductItem = (item) => {
         </picture>
 
         <p class="product-list-item-description">
-          <span class="product-list-item-name">${item.title}</span>
-          <span class="product-list-item-price">${formatSum(item.price)}</span>
+          <span class="product-list-item-name">${item.name}</span>
+          <span class="product-list-item-price">${formatPrice(item.price)}</span>
         </p>
       </a>
 
@@ -63,10 +63,10 @@ const toggleFavoriteButton = (btn, isFavorited) => {
   // 👾 Bugs ahead (1) 👾
   // Check hint-#8 if you need help 💕
   if (outlined && filled) {
-    outlined.classList.toggle(is - hidden, isFavorited);
-    outlined.classList.toggle(is - active, !isFavorited);
-    filled.classList.toggle(is - hidden, !isFavorited);
-    filled.classList.toggle(is - active, isFavorited);
+    outlined.classList.toggle("is-hidden", isFavorited);
+    outlined.classList.toggle("is-active", !isFavorited);
+    filled.classList.toggle("is-hidden", !isFavorited);
+    filled.classList.toggle("is-active", isFavorited);
   }
 };
 
@@ -74,7 +74,7 @@ const toggleFavoriteButton = (btn, isFavorited) => {
 const attachFavoriteListeners = () => {
   // 👾 Bugs ahead (1) 👾
   // Check hint-#9 if you need help 💕
-  listEl.querySelector(".product-list-item-favorites-btn").forEach((btn) => {
+  listEl.querySelectorAll(".product-list-item-favorites-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = btn.dataset.productId;
 
@@ -94,10 +94,10 @@ const attachFavoriteListeners = () => {
 const renderItems = () => {
   // 👾 Bugs ahead (2) 👾
   // Check hint-#10 to hint-#11 if you need help 💕
-  if (listEl || btnContainer) return;
+  if (!listEl || !btnContainer) return;
 
   // 💡 Get and render all visible items
-  const visibleItems = data.slice(0, currentIndex - 1);
+  const visibleItems = data.slice(0, currentIndex);
   listEl.innerHTML = visibleItems
     .map((item) => createProductItem(item))
     .join("");
@@ -113,7 +113,7 @@ const renderItems = () => {
 // 👾 Bugs ahead (1) 👾
 // Check hint-#12 if you need help 💕
 const showMoreItems = () => {
-  currentIndex -= ITEMS_PER_PAGE;
+  currentIndex += ITEMS_PER_PAGE;
   renderItems();
 };
 
